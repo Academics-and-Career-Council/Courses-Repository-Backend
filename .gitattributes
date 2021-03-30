@@ -1,0 +1,4 @@
+*.go linguist-generated=false
+*.go linguist-detectable=true
+*.css linguist-detectable=false
+*.html linguist-detectable=false

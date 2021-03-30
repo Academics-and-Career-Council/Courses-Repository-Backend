@@ -1,0 +1,85 @@
+type Course {
+  title: String!
+  number: String!
+  credits: String!
+  offered: String!
+  contents: String!
+  driveFiles: [String!]!
+  id: ID!
+  dept: String!
+  author: String!
+}
+
+input NewCourse {
+  title: String!
+  number: String!
+  credits: String!
+  offered: String!
+  contents: String!
+  dept: String!
+  author: String!
+}
+
+input ModifyCourseInput {
+  title: String!
+  credits: String!
+  offered: String!
+  contents: String!
+  dept: String!
+}
+
+type Review {
+  id: ID!
+  semester: String!
+  instructor: String!
+  grading: String!
+  course: String!
+  approved: Boolean!
+}
+
+input NewReview {
+  semester: String!
+  instructor: String!
+  grading: String!
+  course: String!
+}
+
+type CourseData {
+  course: Course!
+  reviews: [Review!]!
+}
+
+input SearchParams {
+  identifier: String!
+}
+
+type Query {
+  getCourseData(number: String!): CourseData!
+  getReviewsbyCourse(number: String!): [Review!]!
+  searchCourses(params: SearchParams): [Course!]!
+  searchUsers(params: SearchParams): [User!]!
+}
+
+type Response {
+  ok: Boolean!
+  message: String!
+}
+
+type User {
+  ID: String!
+  name: String!
+  username: String!
+  rollno: String!
+  banned: Boolean!
+  clearance: Int!
+}
+
+type Mutation {
+  addCourse(course: NewCourse!): Response
+  addReview(review: NewReview!): Response
+  modifyCourse(course: ModifyCourseInput): Course!
+  modifyReview(reviewID: String!, status: Boolean!): Review!
+  elevateUser(username: String!): User!
+  demoteUser(username: String!): User!
+  toggleBanUser(username: String!, banned: Boolean!): User!
+}

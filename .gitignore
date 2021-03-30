@@ -1,0 +1,13 @@
+.gitsecret/keys/random_seed
+!*.secret
+.keto/roles/admin.json
+.keto/roles/user.json
+.oathkeeper/jwks.json
+bin/main
+.secrets/**
+!.secrets/*.secret
+config.yml
+config.yaml
+kratos
+auth/authz.development.yml
+auth/rogue.yml
